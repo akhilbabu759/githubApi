@@ -21,7 +21,11 @@ class HomeListTile extends StatelessWidget {
     return Container(
       width: Get.width,
       height: Get.height * 0.2,
-      decoration: BoxDecoration(boxShadow: [BoxShadow(color: Color.fromARGB(106, 0, 0, 0),blurRadius: 10),BoxShadow(color: Colors.white,blurRadius: 10)],
+      decoration: BoxDecoration(
+          boxShadow: const [
+            BoxShadow(color: Color.fromARGB(106, 0, 0, 0), blurRadius: 10),
+            BoxShadow(color: Colors.white, blurRadius: 10)
+          ],
           color: const Color.fromARGB(255, 243, 243, 243),
           borderRadius: BorderRadius.circular(10)),
       child: Center(
@@ -36,17 +40,17 @@ class HomeListTile extends StatelessWidget {
                   backgroundImage: NetworkImage(img),
                   radius: 26,
                 ),
-                SizedBox(width: 30),
+                const SizedBox(width: 30),
                 Container(
                     height: MediaQuery.of(context).size.height * 0.034,
                     width: MediaQuery.of(context).size.width * 0.6,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
-                        color: Color.fromARGB(255, 255, 255, 255)),
+                        color: const Color.fromARGB(255, 255, 255, 255)),
                     child: Center(
                         child: Text(
-                      'owner: ' + owner,
-                      style: TextStyle(
+                      'owner: $owner',
+                      style: const TextStyle(
                         fontSize: 17,
                       ),
                     )))
@@ -59,16 +63,16 @@ class HomeListTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'repo: ' + tex,
-                    style: TextStyle(fontSize: 18),
+                    'repo: $tex',
+                    style: const TextStyle(fontSize: 18),
                   ),
                   Text(
-                    'desc: ' + desc,
-                    style: TextStyle(
+                    'desc: $desc',
+                    style: const TextStyle(
                         fontSize: 15,
                         color: Color.fromARGB(255, 162, 162, 162)),
                     overflow: TextOverflow.ellipsis,
-                    maxLines: 3,
+                    maxLines: 2,
                   ),
                 ],
               ),
@@ -76,13 +80,13 @@ class HomeListTile extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(
+                const Icon(
                   Icons.star,
                   color: Colors.amber,
                 ),
                 Text(
                   star.toString(),
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Color.fromARGB(255, 162, 162, 162), fontSize: 14),
                 ),
               ],

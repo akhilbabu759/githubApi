@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:github_api/home/controller/controller.dart';
-import 'package:github_api/home/view/widget/home-tile.dart';
+import 'package:github_api/home/view/widget/home_tile.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
@@ -12,15 +12,14 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     log('hi');
-    final counter1 = Provider.of<CounterProvider1>(context);
     context.watch<CounterProvider1>().getData(true);
-    // counter1.getData();
+    //  counter1.getData(true);
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 221, 221, 221),
+          backgroundColor: const Color.fromARGB(255, 221, 221, 221),
           elevation: 2,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'GitOS',
             style: TextStyle(fontSize: 25, letterSpacing: 1, shadows: [
               Shadow(
@@ -37,25 +36,32 @@ class Home extends StatelessWidget {
           log('hi2');
           return value.listData.isEmpty
               ? Center(
-                  child: Text('Check your internet connection'),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Check your internet connection'),IconButton(onPressed: () {
+
+                        context.watch<CounterProvider1>().getData(true);
+                      }, icon: const Icon(Icons.refresh))
+                    ],
+                  ),
                 )
               : Padding(
-                  padding: const EdgeInsets.all(18.0),
+                  padding: const EdgeInsets.only(left:18.0,right: 18,top: 18),
                   child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text('to change :',style: TextStyle(color:Colors.black ),),Consumer<CounterProvider1>(
-                            builder: (context, value, child) {return Card(
-                              child: TextButton(onPressed: () {
-                                value.changeDay(!value.dayChange);
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Row(mainAxisAlignment: MainAxisAlignment.end,
+                    //     children: [
+                    //       Text('to change :',style: TextStyle(color:Colors.black ),),Consumer<CounterProvider1>(
+                    //         builder: (context, value, child) {return Card(
+                    //           child: TextButton(onPressed: () {
+                    //             value.changeDay(!value.dayChange);
                                 
-                              }, child: Text("${value.dayChange? 30: 60} day's",style: TextStyle(color:Colors.black ))),
-                            );})
-                        ],
-                      ),
-                    ),
+                    //           }, child: Text("${value.dayChange? 30: 60} day's",style: TextStyle(color:Colors.black ))),
+                    //         );})
+                    //     ],
+                    //   ),
+                    // ),
             //          Consumer<CounterProvider1>(
             //   builder: (context, values, child) => Row(
             //     children: [
